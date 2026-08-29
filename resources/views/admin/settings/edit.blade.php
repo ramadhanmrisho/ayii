@@ -27,6 +27,8 @@
                 <textarea name="seo[default_meta_description]" rows="3" class="rounded-md border border-slate-300 px-4 py-3" placeholder="Default meta description">{{ old('seo.default_meta_description', $settings->get('seo.default_meta_description')) }}</textarea>
             </div>
         </section>
-        <x-button type="submit" class="w-fit">Save Settings</x-button>
+        <div class="flex justify-end">
+            <x-button type="submit" class="w-fit">Save Settings</x-button>
+        </div>
     </form>
 </x-layouts.admin>

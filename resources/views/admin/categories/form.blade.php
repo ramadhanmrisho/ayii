@@ -13,6 +13,8 @@
             <label><input type="checkbox" name="featured" value="1" @checked(old('featured', $category->featured))> Featured</label>
             <label><input type="checkbox" name="active" value="1" @checked(old('active', $category->active ?? true))> Active</label>
         </div>
-        <x-button type="submit" class="mt-6">Save Category</x-button>
+        <div class="mt-6 flex justify-end">
+            <x-button type="submit">Save Category</x-button>
+        </div>
     </form>
 </x-layouts.admin>

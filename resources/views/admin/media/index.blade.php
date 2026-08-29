@@ -2,8 +2,10 @@
     <h1 class="font-display text-3xl font-extrabold">Media Library</h1>
     <form method="POST" enctype="multipart/form-data" action="{{ route('admin.media.store') }}" class="mt-6 rounded-md bg-white p-6 shadow-sm ring-1 ring-slate-200">
         @csrf
-        <input type="file" name="files[]" multiple required class="rounded-md border border-slate-300 px-4 py-3">
-        <x-button type="submit" class="ml-3">Upload</x-button>
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <input type="file" name="files[]" multiple required class="rounded-md border border-slate-300 px-4 py-3">
+            <x-button type="submit">Upload</x-button>
+        </div>
     </form>
     <div class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         @foreach ($media as $item)

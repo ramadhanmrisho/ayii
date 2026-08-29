@@ -14,7 +14,9 @@
             <select name="assigned_to" class="mt-4 w-full rounded-md border border-slate-300 px-4 py-3"><option value="">Unassigned</option>@foreach($users as $user)<option value="{{ $user->id }}" @selected($rfq->assigned_to===$user->id)>{{ $user->name }}</option>@endforeach</select>
             <textarea name="internal_notes" rows="5" class="mt-4 w-full rounded-md border border-slate-300 px-4 py-3" placeholder="Internal notes">{{ $rfq->internal_notes }}</textarea>
             <input type="file" name="quotation_file" class="mt-4 w-full rounded-md border border-slate-300 px-4 py-3">
-            <x-button type="submit" class="mt-4 w-full">Update RFQ</x-button>
+            <div class="mt-4 flex justify-end">
+                <x-button type="submit">Update RFQ</x-button>
+            </div>
         </form>
     </div>
 </x-layouts.admin>

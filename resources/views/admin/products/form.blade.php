@@ -31,8 +31,12 @@
                     <input :name="`specifications[${i}][value]`" placeholder="Value" class="rounded-md border border-slate-300 px-4 py-3">
                 </div>
             </template>
-            <button type="button" @click="rows++" class="mt-4 font-semibold text-ayii-orange">Add specification</button>
+            <div class="mt-4 flex justify-end">
+                <button type="button" @click="rows++" class="font-semibold text-ayii-orange">Add specification</button>
+            </div>
         </section>
-        <x-button type="submit" class="w-fit">Save Product</x-button>
+        <div class="flex justify-end">
+            <x-button type="submit" class="w-fit">Save Product</x-button>
+        </div>
     </form>
 </x-layouts.admin>
