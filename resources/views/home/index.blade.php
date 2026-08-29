@@ -78,7 +78,6 @@
             </div>
         </div>
     </section>
-
     <section class="bg-ayii-orange py-7">
         @php($marqueeItems = collect($trust)->merge($serviceHighlights))
         <div class="w-full overflow-hidden bg-white shadow-sm ring-1 ring-slate-200">
