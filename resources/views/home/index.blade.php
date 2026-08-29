@@ -63,14 +63,14 @@
                     @for ($loopIndex = 0; $loopIndex < 2; $loopIndex++)
                         @foreach ($categoryCards as [$label, $categoryName, $image])
                             @php($category = $categories->firstWhere('name', $categoryName))
-                            <article class="w-[17rem] shrink-0 rounded-md border border-slate-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-                                <a href="{{ route('products.index', $category ? ['category' => $category->slug] : []) }}" class="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-ayii-orange px-3 py-2 text-xs font-extrabold uppercase text-ayii-navy transition hover:bg-[#d98f12]">
-                                    View Products <span aria-hidden="true">→</span>
-                                </a>
+                            <article class="flex h-64 w-[17rem] shrink-0 flex-col rounded-md border border-slate-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md">
                                 <div class="grid h-28 place-items-center">
                                     <img src="{{ $asset($image) }}" alt="{{ $label }}" class="max-h-24 w-full object-contain">
                                 </div>
                                 <h3 class="mt-3 min-h-10 font-display text-sm font-bold text-ayii-navy">{{ $label }}</h3>
+                                <a href="{{ route('products.index', $category ? ['category' => $category->slug] : []) }}" class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-md bg-ayii-orange px-3 py-2 text-xs font-extrabold uppercase text-ayii-navy transition hover:bg-[#d98f12]">
+                                    View Products <span aria-hidden="true">→</span>
+                                </a>
                             </article>
                         @endforeach
                     @endfor
