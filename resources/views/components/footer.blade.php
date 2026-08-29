@@ -15,7 +15,7 @@
                 <a href="{{ route('solutions.index') }}">Solutions</a>
                 <a href="{{ route('projects.index') }}">Projects</a>
                 <a href="{{ route('quote.index') }}">Request a Quote</a>
-                <a href="http://127.0.0.1:8000/login">Login</a>
+                <a href="{{ route('login') }}">Login</a>
             </div>
         </div>
         <div>
