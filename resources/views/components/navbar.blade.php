@@ -2,21 +2,21 @@
 
 <header x-data="{ open: false }" class="bg-white shadow-sm">
     <div class="bg-ayii-navy text-white">
-        <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-sm sm:px-6 lg:px-8">
-            <span class="inline-flex items-center gap-2 font-semibold">
+        <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:text-sm lg:px-8">
+            <span class="inline-flex items-center justify-center gap-2 text-center font-semibold sm:justify-start sm:text-left">
                 <svg aria-hidden="true" class="h-4 w-4 text-ayii-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 2l2 5 5 .5-3.8 3.4 1.1 5.1L12 13.4 7.7 16l1.1-5.1L5 7.5 10 7l2-5Z"/></svg>
                 {{ $settings->get('general.tagline', 'Your Partner of Choice') }}
             </span>
-            <span class="flex flex-wrap items-center gap-4">
+            <span class="flex flex-col items-center gap-1 sm:flex-row sm:flex-wrap sm:gap-4">
                 <span class="inline-flex items-center gap-2"><svg aria-hidden="true" class="h-4 w-4 text-ayii-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4 12 12 0 0 0 2.5.6 2 2 0 0 1 1.7 2Z"/></svg>{{ $settings->get('contact.phone') }}</span>
                 <span class="hidden h-4 w-px bg-white/40 sm:block"></span>
-                <span class="inline-flex items-center gap-2"><svg aria-hidden="true" class="h-4 w-4 text-ayii-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4z M4 7l8 6 8-6"/></svg>{{ $settings->get('contact.email') }}</span>
+                <span class="inline-flex max-w-full items-center gap-2 break-all"><svg aria-hidden="true" class="h-4 w-4 shrink-0 text-ayii-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16v12H4z M4 7l8 6 8-6"/></svg>{{ $settings->get('contact.email') }}</span>
             </span>
         </div>
     </div>
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8" aria-label="Main navigation">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-5" aria-label="Main navigation">
         <a href="{{ route('home') }}" class="flex items-center gap-3">
-            <img src="{{ asset('build/image/logo.png') }}" alt="Ayii logos" class="h-20 w-39 object-contain object-left">
+            <img src="{{ asset('build/image/logo.png') }}" alt="Ayii logos" class="h-14 w-28 object-contain object-left sm:h-16 sm:w-32 lg:h-20 lg:w-39">
         </a>
         <button class="rounded-md p-2 text-ayii-navy md:hidden" @click="open = ! open" aria-label="Toggle navigation">
             <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -53,7 +53,7 @@
             <a href="{{ route('solutions.index') }}">Solutions</a>
             <a href="{{ route('projects.index') }}">Projects</a>
             <a href="{{ route('contact.index') }}">Contact</a>
-            <x-button :href="route('quote.index')">Request a Quote</x-button>
+            <x-button :href="route('quote.index')" class="w-full">Request a Quote</x-button>
         </div>
     </div>
 </header>

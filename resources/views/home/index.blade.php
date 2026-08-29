@@ -31,18 +31,18 @@
         ];
     @endphp
 
-    <section class="relative overflow-hidden bg-ayii-navy pt-10 pb-2 text-white">
+    <section class="relative overflow-hidden bg-ayii-navy pt-4 pb-2 text-white sm:pt-6 lg:pt-10">
         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 30%, #F5A623 1px, transparent 1px); background-size: 24px 24px;"></div>
-        <div class="grid min-h-[520px] w-full items-center lg:grid-cols-12">
-            <div class="relative z-10 min-h-[360px] lg:col-span-12 lg:min-h-[500px]">
-                <div class="ayii-hero-carousel relative h-full overflow-hidden border-b-[10px] border-ayii-orange bg-ayii-navy shadow-2xl lg:min-h-[500px]">
+        <div class="grid min-h-[240px] w-full items-center sm:min-h-[360px] lg:min-h-[520px] lg:grid-cols-12">
+            <div class="relative z-10 min-h-[240px] sm:min-h-[360px] lg:col-span-12 lg:min-h-[500px]">
+                <div class="ayii-hero-carousel relative h-full overflow-hidden border-b-[6px] border-ayii-orange bg-ayii-navy shadow-2xl sm:border-b-[10px] lg:min-h-[500px]">
                     @foreach ($heroSlides as [$image, $alt])
                         <div class="ayii-hero-slide absolute inset-0">
-                            <img src="{{ $slideAsset($image) }}" alt="{{ $alt }}" class="h-full w-full object-contain">
+                            <img src="{{ $slideAsset($image) }}" alt="{{ $alt }}" class="h-full w-full object-cover sm:object-contain">
                         </div>
                     @endforeach
 
-                    <div class="absolute bottom-5 right-5 flex gap-2" aria-label="Hero image carousel controls">
+                    <div class="absolute bottom-3 right-3 flex gap-2 sm:bottom-5 sm:right-5" aria-label="Hero image carousel controls">
                         @foreach ($heroSlides as $slide)
                             <span class="ayii-hero-dot h-2.5 rounded-full bg-white/80"></span>
                         @endforeach
@@ -52,13 +52,27 @@
         </div>
     </section>
 
-    <section class="bg-[#1B2430] px-2 py-2 sm:px-6 lg:px-4">
+    <section class="bg-[#1B2430] px-4 py-8 sm:px-6 lg:px-4">
         <div class="w-full">
             <div class="text-center">
-                <h2 class="font-display text-2xl font-extrabold uppercase text-white">Shop By Category</h2>
+                <h2 class="font-display text-xl font-extrabold uppercase text-white sm:text-2xl">Shop By Category</h2>
                 <span class="mx-auto mt-3 block h-1 w-14 bg-ayii-orange"></span>
             </div>
-            <div class="mt-8 overflow-hidden">
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 md:hidden">
+                @foreach ($categoryCards as [$label, $categoryName, $image])
+                    @php($category = $categories->firstWhere('name', $categoryName))
+                    <article class="flex h-56 flex-col rounded-md border border-slate-200 bg-white p-4 text-center shadow-sm">
+                        <div class="grid h-24 place-items-center">
+                            <img src="{{ $asset($image) }}" alt="{{ $label }}" class="max-h-20 w-full object-contain">
+                        </div>
+                        <h3 class="mt-3 min-h-10 font-display text-sm font-bold text-ayii-navy">{{ $label }}</h3>
+                        <a href="{{ route('products.index', $category ? ['category' => $category->slug] : []) }}" class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-md bg-ayii-orange px-3 py-2 text-xs font-extrabold uppercase text-ayii-navy transition hover:bg-[#d98f12]">
+                            View Products <span aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                @endforeach
+            </div>
+            <div class="mt-8 hidden overflow-hidden md:block">
                 <div class="ayii-category-marquee flex w-max gap-5 py-2 hover:[animation-play-state:paused]">
                     @for ($loopIndex = 0; $loopIndex < 2; $loopIndex++)
                         @foreach ($categoryCards as [$label, $categoryName, $image])
@@ -80,7 +94,20 @@
     </section>
     <section class="bg-ayii-orange py-7">
         @php($marqueeItems = collect($trust)->merge($serviceHighlights))
-        <div class="w-full overflow-hidden bg-white shadow-sm ring-1 ring-slate-200">
+        <div class="grid gap-0 bg-white shadow-sm ring-1 ring-slate-200 md:hidden">
+            @foreach ($marqueeItems as [$title, $copy, $icon])
+                <article class="flex items-center gap-4 border-b border-slate-200 px-4 py-4 last:border-b-0">
+                    <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-ayii-orange/10 text-ayii-orange">
+                        <svg aria-hidden="true" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="{{ $icon }}"/></svg>
+                    </span>
+                    <div class="min-w-0">
+                        <h2 class="font-display text-base font-bold text-ayii-navy">{{ $title }}</h2>
+                        <p class="mt-1 text-sm leading-6 text-slate-600">{{ $copy }}</p>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+        <div class="hidden w-full overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 md:block">
             <div class="ayii-marquee flex w-max gap-0 py-3 hover:[animation-play-state:paused]">
                 @for ($loopIndex = 0; $loopIndex < 2; $loopIndex++)
                     @foreach ($marqueeItems as [$title, $copy, $icon])
@@ -99,14 +126,14 @@
         </div>
     </section>
 
-    <section class="bg-white px-4 py-14 sm:px-6 lg:px-8">
+    <section class="bg-white px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div class="mx-auto max-w-7xl">
             <div class="flex flex-col justify-between gap-4 md:flex-row md:items-end">
                 <div>
                     <p class="text-sm font-bold uppercase text-ayii-orange">Featured Products</p>
-                    <h2 class="mt-2 font-display text-3xl font-extrabold text-ayii-navy">Ready for Homes, Businesses and Institutions</h2>
+                    <h2 class="mt-2 font-display text-2xl font-extrabold text-ayii-navy sm:text-3xl">Ready for Homes, Businesses and Institutions</h2>
                 </div>
-                <x-button :href="route('products.index')" variant="secondary">View Catalogue</x-button>
+                <x-button :href="route('products.index')" variant="secondary" class="w-full sm:w-fit">View Catalogue</x-button>
             </div>
             <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 @forelse ($products->take(3) as $product)

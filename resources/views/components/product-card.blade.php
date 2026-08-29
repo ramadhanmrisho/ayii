@@ -34,7 +34,7 @@
         @endif
         <p class="mt-3 line-clamp-2 min-h-12 text-base leading-6 text-slate-600">{{ $product->short_description }}</p>
 
-        <div class="mt-auto grid grid-cols-2 gap-3 pt-6">
+        <div class="mt-auto grid gap-3 pt-6 sm:grid-cols-2">
             <a href="{{ route('products.show', $product) }}" class="inline-flex items-center justify-center gap-2 rounded-md border-2 border-ayii-navy px-4 py-3 text-sm font-extrabold text-ayii-navy transition hover:bg-ayii-navy hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ayii-navy">
                 <svg aria-hidden="true" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
                 Details
