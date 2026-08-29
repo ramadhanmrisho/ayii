@@ -1,0 +1,245 @@
+@import 'tailwindcss';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+@import '@fontsource/poppins/800.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --color-ayii-navy: #1B2430;
+    --color-ayii-orange: #F5A623;
+    --color-ayii-white: #FFFFFF;
+    --color-ayii-off-white: #F7F7F7;
+}
+
+:root {
+    --ayii-navy: #1B2430;
+    --ayii-orange: #F5A623;
+    --ayii-white: #FFFFFF;
+    --ayii-off-white: #F7F7F7;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--ayii-off-white);
+    color: var(--ayii-navy);
+}
+
+.ayii-nav-button {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 1px 2px rgba(27, 36, 48, 0.06);
+    transition:
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 220ms ease,
+        color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.ayii-nav-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.48) 45%, transparent 70%),
+        linear-gradient(135deg, rgba(245, 166, 35, 0.16), rgba(27, 36, 48, 0.08));
+    opacity: 0;
+    transform: translateX(-115%);
+    transition:
+        opacity 220ms ease,
+        transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ayii-nav-button::after {
+    content: '';
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.28rem;
+    left: 0.75rem;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--ayii-orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ayii-nav-button:hover,
+.ayii-nav-button:focus-visible {
+    color: var(--ayii-navy);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 22px rgba(27, 36, 48, 0.12);
+}
+
+.ayii-nav-button:hover::before,
+.ayii-nav-button:focus-visible::before {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.ayii-nav-button:hover::after,
+.ayii-nav-button:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.ayii-nav-button:active {
+    transform: translateY(0) scale(0.98);
+}
+
+@media (prefers-color-scheme: dark) {
+    .ayii-nav-button:hover,
+    .ayii-nav-button:focus-visible {
+        color: var(--ayii-white);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+    }
+
+    .ayii-nav-button::before {
+        background:
+            linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, transparent 70%),
+            linear-gradient(135deg, rgba(245, 166, 35, 0.22), rgba(255, 255, 255, 0.08));
+    }
+}
+
+@keyframes ayii-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.ayii-marquee {
+    animation: ayii-marquee 34s linear infinite;
+}
+
+.ayii-category-marquee {
+    animation: ayii-marquee 28s linear infinite;
+}
+
+@keyframes ayii-hero-slide {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 12% 0 12%);
+        transform: scale(1.04);
+    }
+
+    3%,
+    18% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: scale(1);
+    }
+
+    24% {
+        opacity: 0;
+        clip-path: inset(0 0 0 0);
+        transform: scale(0.98);
+    }
+
+    24.01%,
+    100% {
+        opacity: 0;
+        clip-path: inset(0 12% 0 12%);
+        transform: scale(1.04);
+    }
+}
+
+@keyframes ayii-hero-dot {
+    0%,
+    24% {
+        width: 2rem;
+        background: var(--ayii-orange);
+    }
+
+    25%,
+    100% {
+        width: 0.625rem;
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.ayii-hero-carousel:hover .ayii-hero-slide,
+.ayii-hero-carousel:hover .ayii-hero-dot {
+    animation-play-state: paused;
+}
+
+.ayii-hero-slide {
+    opacity: 0;
+    animation: ayii-hero-slide 35s infinite;
+    will-change: opacity, transform, clip-path;
+}
+
+.ayii-hero-dot {
+    animation: ayii-hero-dot 35s infinite;
+}
+
+.ayii-hero-slide:nth-of-type(1),
+.ayii-hero-dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.ayii-hero-slide:nth-of-type(2),
+.ayii-hero-dot:nth-child(2) {
+    animation-delay: 7s;
+}
+
+.ayii-hero-slide:nth-of-type(3),
+.ayii-hero-dot:nth-child(3) {
+    animation-delay: 14s;
+}
+
+.ayii-hero-slide:nth-of-type(4),
+.ayii-hero-dot:nth-child(4) {
+    animation-delay: 21s;
+}
+
+.ayii-hero-slide:nth-of-type(5),
+.ayii-hero-dot:nth-child(5) {
+    animation-delay: 28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+    .ayii-marquee {
+        animation: none !important;
+        transform: translateX(0);
+    }
+
+    .ayii-hero-slide,
+    .ayii-hero-dot {
+        animation: none !important;
+    }
+
+    .ayii-hero-slide:first-child {
+        opacity: 1;
+        transform: none;
+    }
+
+    .ayii-nav-button,
+    .ayii-nav-button::before,
+    .ayii-nav-button::after {
+        transform: none !important;
+        transition: none !important;
+    }
+}

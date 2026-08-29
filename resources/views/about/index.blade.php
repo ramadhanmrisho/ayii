@@ -1,0 +1,1 @@
+<x-layouts.app title="About Ayii"><section class="bg-white px-4 py-20 text-center"><x-section-heading eyebrow="About Us" title="Ayii" description="Dynamic about content management is part of the next CMS content phase." /></section></x-layouts.app>

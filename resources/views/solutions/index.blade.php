@@ -1,0 +1,1 @@
+<x-layouts.app title="Solutions - Ayii"><section class="bg-white px-4 py-20 text-center"><x-section-heading eyebrow="Solutions" title="Electronics and Technology Solutions" /></section></x-layouts.app>
